@@ -9,7 +9,7 @@ spring:
       validation-timeoit: 1000
       maximum-pool-size: 30
     driver-class-name: org.mariadb.jdbc.Driver  
-    url: jdbc:mariadb://192.168.0.26/redistest?useSSL=false&serverTimezone=Asia/Seoul
+    url: jdbc:mariadb://192.168.0.26/redistest
     username: yjy
     password: yjy  
 logging:  level:    root: warn

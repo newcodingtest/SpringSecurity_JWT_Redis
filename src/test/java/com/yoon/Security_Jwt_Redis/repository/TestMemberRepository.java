@@ -1,10 +1,13 @@
 package com.yoon.Security_Jwt_Redis.repository;
 
 import org.junit.jupiter.api.MethodOrderer;
+import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestMethodOrder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.test.annotation.Commit;
 
 import com.yoon.Security_Jwt_Redis.domain.Member;
 import com.yoon.Security_Jwt_Redis.domain.Role;
@@ -19,12 +22,17 @@ public class TestMemberRepository {
 	@Autowired
 	private MemberRepository memberRepository;
 	
+	@Autowired
+	private PasswordEncoder passwordEncoder;
+	
 	@Test
+	@Order(1)
+	@Commit
 	public void A001_사용자_등록() {
 		//Given
 		Member admin = Member.builder()
 				.id("admin")
-				.password("admin")
+				.password(passwordEncoder.encode("admin"))
 				.dname("admin 부서")
 				.enabled(true)
 				.role(Role.ROLE_ADMIN)
@@ -32,7 +40,7 @@ public class TestMemberRepository {
 		
 		Member manager = Member.builder()
 				.id("manager")
-				.password("manager")
+				.password(passwordEncoder.encode("manager"))
 				.dname("manager 부서")
 				.enabled(true)
 				.role(Role.ROLE_MANAGER)
@@ -40,7 +48,7 @@ public class TestMemberRepository {
 		
 		Member member = Member.builder()
 				.id("member")
-				.password("member")
+				.password(passwordEncoder.encode("member"))
 				.dname("member 부서")
 				.enabled(true)
 				.role(Role.ROLE_MEMBER)
