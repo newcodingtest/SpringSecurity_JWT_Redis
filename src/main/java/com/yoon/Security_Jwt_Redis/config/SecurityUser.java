@@ -5,6 +5,11 @@ import org.springframework.security.core.userdetails.User;
 
 import com.yoon.Security_Jwt_Redis.domain.Member;
 
+import lombok.Getter;
+import lombok.ToString;
+
+@Getter
+@ToString
 public class SecurityUser extends User {
 
 	private String dname;

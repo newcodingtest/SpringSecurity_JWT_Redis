@@ -14,7 +14,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 //WebMvcConfigurer: JWT 토큰 사용시
 @Configuration
 @EnableWebSecurity
-public class SecurityConfig implements WebMvcConfigurer {
+public class SecurityConfig extends WebSecurityConfigurerAdapter  {
 
 	protected void configure(HttpSecurity http) throws Exception {
 		http.authorizeHttpRequests().antMatchers("/").permitAll(); //개나소나 다 접근
@@ -25,7 +25,8 @@ public class SecurityConfig implements WebMvcConfigurer {
 		
 		http.csrf().disable(); //공식문서 non-browser clients 만을 위한 서비스라면 csrf를 disable 하여도 좋다고 함. 추후 rest api 인증 처리를 위함=> 서버에 인증 정보를 저장해두지 않음
 		
-		http.formLogin().loginPage("/login").defaultSuccessUrl("/main",true); //로그인 성공했을 시 페이지 지정
+		//http.formLogin().loginPage("/login").defaultSuccessUrl("/main",true); //로그인 성공했을 시 페이지 지정
+		http.formLogin().defaultSuccessUrl("/main",true); //로그인 성공했을 시 페이지 지정
 		http.formLogin().loginProcessingUrl("/loginAction").defaultSuccessUrl("/main",true); //로그인 시도(POST)시 "/loginAction" url로 이동, 성공시 "/main" url로 이동
 		http.exceptionHandling().accessDeniedPage("/accessDenied"); // 권한 없을때 접근시 이동 페이지 설정
 		http.logout().logoutUrl("/logout").logoutSuccessUrl("/"); // 로구어윳 url 설정
