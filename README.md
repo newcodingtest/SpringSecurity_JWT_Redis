@@ -1,5 +1,5 @@
 # SpringSecurity_JWT_Redis
-시큐리티+JWT+Redis서버 적용해보기
+시큐리티+JWT+Redis서버(로그인 세션 공유) 적용해보기
 
 
 
