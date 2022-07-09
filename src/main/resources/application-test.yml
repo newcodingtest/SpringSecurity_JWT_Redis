@@ -12,5 +12,10 @@ spring:
     url: jdbc:mariadb://192.168.0.26/redistest
     username: yjy
     password: yjy  
+  session:
+    store-type: REDIS
+  redis:
+    host: localhost
+    port: 6379       
 logging:  level:    root: warn
     com.yoon.Security_Jwt_Redis: debug  

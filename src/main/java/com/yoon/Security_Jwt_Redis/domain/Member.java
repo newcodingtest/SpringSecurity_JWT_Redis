@@ -1,6 +1,6 @@
 package com.yoon.Security_Jwt_Redis.domain;
 
-import java.io.Serializable;
+import java.io.Serializable; 
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -23,7 +23,7 @@ import lombok.ToString;
 @NoArgsConstructor
 @AllArgsConstructor(access= AccessLevel.PRIVATE)
 @Builder
-public class Member{
+public class Member implements Serializable{
 
 	@Id
 	@Column(nullable=false)

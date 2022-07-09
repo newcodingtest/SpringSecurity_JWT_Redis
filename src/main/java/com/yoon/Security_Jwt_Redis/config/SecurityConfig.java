@@ -27,7 +27,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter  {
 		
 		//http.formLogin().loginPage("/login").defaultSuccessUrl("/main",true); //로그인 성공했을 시 페이지 지정
 		http.formLogin().defaultSuccessUrl("/main",true); //로그인 성공했을 시 페이지 지정
-		http.formLogin().loginProcessingUrl("/loginAction").defaultSuccessUrl("/main",true); //로그인 시도(POST)시 "/loginAction" url로 이동, 성공시 "/main" url로 이동
+		http.formLogin().successHandler(successHandler()).defaultSuccessUrl("/main",true); //로그인 시도(POST)시 "/loginAction" url로 이동, 성공시 "/main" url로 이동
 		http.exceptionHandling().accessDeniedPage("/accessDenied"); // 권한 없을때 접근시 이동 페이지 설정
 		http.logout().logoutUrl("/logout").logoutSuccessUrl("/"); // 로구어윳 url 설정
 		
@@ -38,5 +38,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter  {
 		return new BCryptPasswordEncoder();
 	}
 	
+	   @Bean
+	    public ClubLoginSuccessHandler successHandler(){
+	        return new ClubLoginSuccessHandler(passwordEncoder());
+	    }
 
 }
