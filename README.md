@@ -5,7 +5,10 @@
 
 
 ```
-docker network create redist-net
+docker network create redis-net
+
+docker network ls
+
 docker run --name my-redis -p 6379:6379 --network redis-net -d redis ridis-server --appendonly yes
 ```
 
