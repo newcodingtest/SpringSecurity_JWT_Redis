@@ -17,7 +17,7 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class ClubLoginSuccessHandler implements AuthenticationSuccessHandler {
 
-
+	//test
     private RedirectStrategy redirectStrategy = new DefaultRedirectStrategy(); //리다이렉트 클래스
 
     private PasswordEncoder passwordEncoder;
